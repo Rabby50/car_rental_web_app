@@ -20,8 +20,26 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'address',
         'password',
     ];
+
+    // public function isAdmin()
+    // {
+    //     return $this->role === 'admin';
+    // }
+
+    // public function isCustomer()
+    // {
+    //     return $this->role === 'customer';
+    // }
+
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,4 +63,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+
 }
